@@ -48,63 +48,66 @@
 						<small>Created by Kim</small>
 					</p>
 				</section>
-				
+
 				<section>
-					<h3>What is Backbone.Marionette?</h3>
-					
+					<p style="font-size:50px">What is Backbone.Marionette?</p>
+
+
 					<br>
-					
+
 					<p>
 						Backbone.Marionette is a simple wrapper for BackboneJS.
 					</p>
-					
+
 					<br>
-					
+
 					<p>
 						It simply extends Backbone base classes.
 					</p>
 				</section>
-				
+
 				<section>
-					<h3>Why Backbone.Marionette?</h3>
-					
+					<p style="font-size:50px">Why Backbone.Marionette?</p>
+
 					<br>
-					
+
 					<p>
 						BackboneJS easily makes your app chaotic.
 					</p>
-					
+
 					<br>
-					
+
 					<p>
 						Marionette gives musle and skin to BackboneJS.
 					</p>
-					
+
 				</section>
-				
+
 				<section>
-					
-					<h3>What is different from vanilla Backbone?</h3>
-					
+
+					<p style="font-size:50px">What's difference from vanilla Backbone?</p>
+
+
 					<ul>
 						<li>Modularized App</li>
 						<li>View</li>
 						<li>Controller</li>
 						<li>Event Aggregator</li>
 					</ul>
-					
+
 				</section>
 
 				<section>
 					<section>
-						<h3>Modularized App</h3>
-						
+						<p style="font-size:50px">Modularized App</p>
+
+
 						<br>
-						
+
 						<p>
 							You can define modules as many as you want inside one app.
 						</p>
-						
+
 						<br>
 						<pre><code>
 var KVH = new Marionette.Application();
@@ -116,67 +119,69 @@ KVH.module('Department', function (Department, KVH, Backbone, Marionette, _) {
 // Starting module
 KVH.Department.start()
 						</code></pre>
-						
+
 
 					</section>
-					
+
 					<section>
-						<h3>start() and stop()</h3>
-						
+						<p style="font-size:50px">start() and stop()</p>
+
+
 						<br>
-						
+
 						<p>
 							Module.start(): You have control over module start.
 						</p>
-						
+
 						<br>
-						
+
 						<p>
 							Module.stop(): Probably you don't use except in tests.
 						</p>
 					</section>
-					
+
 				</section>
-				
+
 				<section>
 					<section>
-						<h3>View</h3>
-						
+						<p style="font-size:50px">View</p>
+
+
 						<br>
-						
+
 						<p>
 							Types of Marionette Views
 						</p>
-						
+
 						<br>
-						
+
 						<ul>
 							<li>Marionette.ItemView</li>
 							<li>Marionette.CollectionView</li>
 							<li>Marionette.CompositeView</li>
 							<li>Marionette.LayoutView</li>
 						</ul>
-						
+
 					</section>
-					
+
 					<section>
-						<h3>Item and Collection View</h3>
-						
+						<p style="font-size:50px">Item and Collection View</p>
+
 						<br>
-						
+
 						<p>
 							ItemView is for a single model and Collection view is for a conllection of models.
 						</p>
 					</section>
-					
+
 					<section>
-						Sample:
+						Example:
 						<pre><code>
 //
-// Define a module for DepartmentView 
+// Define a module for DepartmentView
 //
 KVH.module('DepartmentView', function (DepartmentView, KVH, Backbone, Marionette, _) {
-	
+
   // Item View. Single row of list
   DepartmentView.ItemView = Marionette.ItemView.extend({
     template: ItemViewTpl
@@ -188,35 +193,36 @@ KVH.module('DepartmentView', function (DepartmentView, KVH, Backbone, Marionette
     itemView: DepartmentView.ItemView
   });
 })
-						</code></pre>	
-						
+						</code></pre>
+
 					</section>
-					
+
 					<section>
-						<h3>Marionette.Compositeview</h3>
-						
+						<p style="font-size:50px">Marionette.Compositeview</p>
+
+
 						<br>
-						
+
 						<p>
 							CompositeView is extended from CollectionView to use template
 						</p>
-						
+
 						<br>
-						
-						
+
+
 					</section>
-					
+
 					<section>
 						<p>
-							Sample:
+							Example:
 						</p>
-						
+
 						<pre><code>
 //
 // This is slightly better looking version of ListView
 //
 KVH.module('DepartmentView', function (DepartmentView, KVH, Backbone, Marionette, _) {
-	
+
   DepartmentView.FancyListView = Marionette.CompositeView.extend({
     childView: DepartmentView.ItemView,
     template: FancyListTpl,
@@ -225,198 +231,280 @@ KVH.module('DepartmentView', function (DepartmentView, KVH, Backbone, Marionette
 });
 						</code></pre>
 					</section>
-					
+
 					<section>
-						<h3>Marionette.LayoutView</h3>
-						
+						<p style="font-size:50px">Marionette.LayoutView</p>
+
+
 						<br>
-						
+
 						<p>
 							LayoutView is simply extend from ItemView with Region manager, yet very powrful.
 						</p>
-						
+
 					</section>
-					
+
 					<section>
-						<h3>What is Region?</h3>
-						
+						<p style="font-size:50px">What is Region?</p>
+
+
 						<br>
-						
+
 						<p>
 							It is the abstraction over Backbone view. You can simply insert other views into Region and call show() to render.
 						</p>
 					</section>
-					
+
 					<section>
-						<h3>Sample</h3>
-						<p>
-							First, layout view definition
-						</p>
 						<pre><code>
-KVH.module('DepartmentView', function (DepartmentView, KVH, Backbone, Marionette, _) {
-  
-  // Define Layout View
-  DepartmentView.LayoutView = Marionette.LayoutView.extend({
-    template: LayoutTpl,
-    
-    regions: {
-      mainRegion: "#main-region"
-    }
-  });
-  
-  // Define CollectionView to insert to region
-  DepartmentView.ListView = Marionette.CollectionView.extend({
-    el: 'DeptListTpl',
-    itemView: DepartmentView.ItemView
-  });
-  
-  // Define view for page loading spinner
-  DepartmentView.LoadingView = Marionette.ItemView.extend({
-    el: SpinnterTpl,
-  });
-  
+// Define Layout View
+DepartmentView.LayoutView = Marionette.LayoutView.extend({
+  template: LayoutTpl,
+
+  regions: {
+    mainRegion: "#main-region"
+  }
 });
-  					</code></pre>			
-							<p>
-							Just insert your view into region with show().	
-							</p>
+						</code></pre>
+						<pre><code>
+// Define CollectionView to insert to region
+DepartmentView.ListView = Marionette.CollectionView.extend({
+  el: 'DeptListTpl',
+  itemView: DepartmentView.ItemView
+});
+						</code></pre>
+						<pre><code>
+// Define view for page loading spinner
+DepartmentView.LoadingView = Marionette.ItemView.extend({
+  template: SpinnterTpl,
+});
+  					</code></pre>
 						<pre><code>
 layoutView = new LayoutView()
 
 layoutView.mainRegion.show(new LoadingView())
 
-$(fetchingList).done(list, function{
-  lauoutView.mainRegion.show(new ListView({collection: list}))	
+$(fetchingList).done(function(list){
+  lauoutView.mainRegion.show(new ListView({collection: list}))
 })
-  					</code></pre>			
-							
+  					</code></pre>
+
 					</section>
-					
+
 					<section>
 						<p>
 							Bonus: You can insert other LayoutView to region
 						</p>
-						
+
 						<br>
-						
+
 						<p>
 							Nesting view made easy!!
 						</p>
 					</section>
 
 				</section>
-				
+
 				<section>
 					<section>
 						<p style="font-size:50px">Marionette.Controller</p>
 					</section>
-					
+
 					<section>
-						
+
 						<p>
-							It is nothing to do with MVC's C as in Rails ActionController
+							Quotes from official doc
 						</p>
-						
+
 						<br>
-						
-						<p>
-							Marionette.Controller is very loosely defined object
-						</p>
-						
+
+						<quotes style="font-style: italic">
+							Its name can be a cause for confusion, as it actually has nothing to do with the popular MVC architectural pattern.
+						</quotes>
+
 					</section>
-					
+
+					<section>
+						<p style="font-size:50px">How I use Controller</p>
+					</section>
+
+					<section>
+						<p style="font-size:50px">Methods that "integrates" different objects</p>
+
+						<br>
+
+						<p>
+							Example:
+						</p>
+
+						<pre><code>
+MyApp.module("Controller", function(Controller, MyApp, Backbone, Marionette, $, _) {
+
+  Controller.Controller = Marionette.Controller.extend({
+    showItem: function(){
+      model = new Item()
+      view = new ItemView	({model: model})
+
+      view.on("event1", function(){
+        alert("event1 is triggered!!")
+      });
+
+      MyApp.mainRegion.show(view);
+    }
+  })
+
+})
+						</pre></code>
+
+						<br>
+
+						<p>
+							ShowItem() is called from router for /item/{:id}
+						</p>
+
+					</section>
+
+					<section>
+						<p style="font-size:50px">So this is MVC's Controller, isn't it?</p>
+					</section>
+
 				</section>
-				
+
 				<section>
 					<section>
 						<p style="font-size:50px">Event Aggregator</p>
 					</section>
-					
+
 					<section>
 						<p>
 							Application wide event is built in.
 						</p>
-						
+
 						<br>
-						
+
 						<p>
 						  Makes it easy	for each sub-modules to talk.
 						</p>
 					</section>
-					
+
 					<section>
 						<p style="font-size:50px">Listen on events</p>
-						
+
 						<pre><code>
 var KVH = new Backbone.Marionette.Application();
 
-KVH.vent.on("business:fail", function(someData){
-  alert("Fire some employees!!");
+KVH.vent.on("business:fail", function(division){
+  alert("Fire employees in " + division + "now!!");
 });
 
-window.setInterval(function() {
-  KVH.vent.trigger("business:fail");
-}, 1000 * 60);
-						</code></pre>	
-						
+KVH.vent.trigger("business:fail", division);
+						</code></pre>
+
 					</section>
-					
+
 					<section>
 						<p style="font-size:50px">There are also "Commands"</p>
-						
+
 						<br>
-						
+
 						<p>
-							Works similar to event aggregator. Only semantics are different.
+							Works similar trigger. Only semantics are different.
 						</p>
 					</section>
-					
+
 				</section>
-				
+
 				<section>
 					<p style="font-size:50px">
 						How about models/collection?
 					</p>
-					
+
 					<br>
-					
+
 					<p>
 					 Nothing new from Marionette. Just use one provided by Backbone.
 					</p>
-					
+
 				</section>
-				
+
 				<section>
 					<section>
 						<p style="font-size:50px">
 							What should I do if I stuck?
 						</p>
-						
+
 						<img src="./images/no-idea.png" style="width:350px;height:350px" alt="" />
-						
+
 						<br>
-						
+						<br>
+						<br>
+
 						<ul>
-							<li>First, you can ask me</li>
-							<li>Backbone.Marionette.js: A Gentle Introduction</li>
-							<li>Read test and source code of Marionette</li>
+							<li>You can ask me</li>
+							<li>Read "Backbone.Marionette.js: A Gentle Introduction"</li>
+							<li>Dive into tests and source code of Marionette</li>
 						</ul>
-						
+
 					</section>
 				</section>
-				
+
 				<section>
-					<p style="font-size:50px">
-						Still not sure what to do?
-					</p>
-					
-					<br>
-					
-					<p>
-						Pleae read my blog. I wrote the post having our team in mind.
-					</p>
+					<span style="font-size:50px">More info is available at <a href="http://kimh.github.io">my blog</a></span>
 				</section>
-				
+
+				<section>
+					<section>
+						<h3>おまけ</h3>
+					</section>
+					<section>
+						<p style="font-size:50px">Do people still use Backbone?</p>
+					</section>
+
+					<section>
+						<p style="font-size:50px">Alternatives</p>
+
+						<br>
+
+						<span style="color:red;font-size: 40px; text-align:left">AngularJS: </span><span>huge framework, high cost of learning, recenlty moving to wired direction...</span>
+
+						<br>
+						<br>
+
+						<span style="color:red;font-size: 40px; text-align:left">EmberJS: </span><span>Never looked at, but recently getting popular</span>
+
+						<br>
+						<br>
+
+						<span style="color:red;font-size: 40px; text-align:left">React: </span><span>uses shadow DOM technology, only provides V of MV*</span>
+					</section>
+
+					<section>
+						<p style="font-size:50px">Where are we heading?</p>
+
+						<br>
+						<br>
+						<br>
+
+						<p>
+							People are get tired of creating SPA.
+						</p>
+
+						<br>
+						<br>
+
+						<p>
+							Tons of things to to do just make frontend working.
+						</p>
+
+						<br>
+						<br>
+
+						<p style="color:red;font-size: 80px">
+							Strike back of server side rendering!!
+						</p>
+					</section>
+				</section>
+
 			</div>
 
 		</div>
