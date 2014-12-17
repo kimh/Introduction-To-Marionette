@@ -92,7 +92,7 @@
 						<li>Modularized App</li>
 						<li>View</li>
 						<li>Controller</li>
-						<li>Event Aggregator</li>
+						<li>Messaging System<li>
 					</ul>
 
 				</section>
@@ -372,12 +372,12 @@ MyApp.module("Controller", function(Controller, MyApp, Backbone, Marionette, $, 
 
 				<section>
 					<section>
-						<p style="font-size:50px">Event Aggregator</p>
+						<p style="font-size:50px">Messaging System</p>
 					</section>
 
 					<section>
 						<p>
-							Application wide event is built in.
+							Application wide messag system is built in.
 						</p>
 
 						<br>
@@ -388,7 +388,13 @@ MyApp.module("Controller", function(Controller, MyApp, Backbone, Marionette, $, 
 					</section>
 
 					<section>
-						<p style="font-size:50px">Listen on events</p>
+						<p>
+							3 kinds of messaging system
+						</p>
+					</section>
+
+					<section>
+						<p style="font-size:50px">Event Aggregator</p>
 
 						<pre><code>
 var KVH = new Backbone.Marionette.Application();
@@ -403,12 +409,46 @@ KVH.vent.trigger("business:fail", division);
 					</section>
 
 					<section>
+						<p style="font-size:50px">Request Response</p>
+
+						<br>
+
+						<pre><code>
+var KVH = new Backbone.Marionette.Application();
+
+KVH.reqres.setHandler("request_raise_salary", function(division){
+
+	if (KVH.isBusinessWell()) {
+		return true
+	} else {
+		return false
+	}
+
+});
+
+var salaryIncreaed = MyApp.request.execute("request_raise_salary");
+						</code></pre>
+					</section>
+
+					<section>
 						<p style="font-size:50px">There are also "Commands"</p>
 
 						<br>
 
+						<pre><code>
+var KVH = new Backbone.Marionette.Application();
+var HR = new Backbone.Marionette.Model();
+
+KVH.commands.setHandler("raise_salary", function(division){
+	var hr = new HR()
+	hr.increaseSalary();
+});
+
+MyApp.commands.execute("raise_salary");
+						</code></pre>
+
 						<p>
-							Works similar trigger. Only semantics are different.
+							Works similar trigger. Difference is commands doesn't return values.
 						</p>
 					</section>
 
@@ -440,9 +480,9 @@ KVH.vent.trigger("business:fail", division);
 						<br>
 
 						<ul>
-							<li>You can ask me</li>
+							<li><a href="https://github.com/marionettejs/backbone.marionette/tree/master/docs">Official doc in github</a></li>
 							<li>Read "Backbone.Marionette.js: A Gentle Introduction"</li>
-							<li>Dive into tests and source code of Marionette</li>
+							<li>Read tests and source code of Marionette</li>
 						</ul>
 
 					</section>
@@ -458,6 +498,11 @@ KVH.vent.trigger("business:fail", division);
 					</section>
 					<section>
 						<p style="font-size:50px">Do people still use Backbone?</p>
+
+						<br>
+
+						<img src="./images/mvc_trend.png" alt="" />
+
 					</section>
 
 					<section>
